@@ -36,6 +36,7 @@ export const createStartup = async (form: FormData, content: string) => {
 
 export const fetchUser = async(id:string)=> {
     try {
+        await connectDB();
         const user = await Author.findOne({_id:id});
 
         if(!user) {
