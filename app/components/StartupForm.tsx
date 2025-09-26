@@ -28,7 +28,7 @@ const StartupForm = () => {
 
       await formSchema.parseAsync(formValues);
 
-      const result = await createStartup(prevState, formData, content);
+      const result = await createStartup(formData, content);
 
       if (result.status === "SUCCESS") {
         router.push(`/startup/${result._doc._id}`);

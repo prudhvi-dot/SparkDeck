@@ -6,7 +6,7 @@ import connectDB from "./ConnectDB";
 import { auth } from "@/auth"
 import Author from "@/models/Author";
 
-export const createStartup = async (state: any, form: FormData, content: string) => {
+export const createStartup = async (form: FormData, content: string) => {
     const session = await auth();
 
     if(!session) {

@@ -10,7 +10,7 @@ export async function GET(req: NextRequest) {
     const { searchParams } = new URL(req.url);
     const query = searchParams.get("query")?.trim() || "";
 
-    let pipeline: PipelineStage[] = [
+    const pipeline: PipelineStage[] = [
       {
         $lookup: {
           from: "authors",
