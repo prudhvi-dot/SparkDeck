@@ -8,8 +8,7 @@ const page = async () => {
 
   if (!session) redirect("/");
   return (
-    <div>
-      <h1>Create Startup</h1>
+    <div className="mt-[85px]">
       <StartupForm />
     </div>
   );
