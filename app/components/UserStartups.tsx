@@ -16,7 +16,6 @@ async function getStartups(id: string) {
 
 const UserStartups = async ({ id }: { id: string }) => {
   const startups = await getStartups(id);
-  console.log(startups[0]);
   return (
     <div>
       {startups.length > 0 ? (

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { signIn, signOut, auth } from "@/auth";
 import { LogOut } from "lucide-react";
+import Image from "next/image";
 
 const Navbar = async () => {
   const session = await auth();
@@ -19,6 +20,16 @@ const Navbar = async () => {
                 <span className="max-sm:hidden text-2xl bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-600 bg-clip-text text-transparent">
                   Create
                 </span>
+              </Link>
+
+              <Link href={`/user/${session.user.id}`}>
+                <Image
+                  src={session?.user?.image || ""}
+                  alt="avatar"
+                  width={44}
+                  height={44}
+                  className="rounded-full drop-shadow-lg"
+                />
               </Link>
 
               <form
