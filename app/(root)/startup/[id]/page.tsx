@@ -2,6 +2,8 @@ import React from "react";
 export const experimental_ppr = true;
 import Link from "next/link";
 import Image from "next/image";
+import { IncViews } from "@/lib/actions";
+import { Eye } from "lucide-react";
 
 import markdownit from "markdown-it";
 const md = markdownit();
@@ -24,6 +26,7 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params;
   const post = await getPost(id);
   const parsedContent = md.render(post?.content || "");
+  await IncViews(id);
   return (
     <div>
       {/* Hero Section */}
@@ -49,7 +52,7 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
         <div className="max-w-5xl mx-auto">
           <div className="relative w-full max-sm:h-[300px] h-[500px] rounded-xl overflow-hidden shadow-md">
             <Image
-              src={post?.image}
+              src={post?.image || ""}
               alt="thumbnail"
               fill
               className="object-cover"
@@ -101,6 +104,15 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
           </div>
         </div>
       </section>
+      <div className="fixed bottom-4 right-4 z-50">
+        <div
+          className="flex items-center gap-2 px-4 py-2 rounded-full 
+                  bg-indigo-600 text-white shadow-md"
+        >
+          <Eye size={16} />
+          <span className="text-sm font-medium">{post?.views}</span>
+        </div>
+      </div>
     </div>
   );
 };

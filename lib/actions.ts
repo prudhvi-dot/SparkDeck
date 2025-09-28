@@ -49,3 +49,16 @@ export const fetchUser = async(id:string)=> {
         return JSON.parse(JSON.stringify({error: "Error Fetching User", status: "ERROR"}));
     }
 }
+
+export const IncViews = async(id:string)=> {
+    try {
+        await connectDB();
+
+        await Startup.findByIdAndUpdate(id,{$inc:{views:1}});
+
+        return JSON.parse(JSON.stringify({status: "SUCCESS"}))
+    } catch (error) {
+        console.log(error);
+        return JSON.parse(JSON.stringify({error: "Error Fetching User", status: "ERROR"}));
+    }
+}
