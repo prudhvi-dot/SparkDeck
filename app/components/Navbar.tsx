@@ -57,7 +57,7 @@ const Navbar = async () => {
               }}
             >
               <button type="submit">
-                <span className="max-sm:hidden cursor-pointer text-2xl bg-gradient-to-l from-purple-600 via-pink-600 to-rose-500 bg-clip-text text-transparent">
+                <span className="cursor-pointer text-2xl bg-gradient-to-l from-purple-600 via-pink-600 to-rose-500 bg-clip-text text-transparent">
                   Login
                 </span>
               </button>
